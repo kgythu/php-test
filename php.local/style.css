@@ -1,0 +1,30 @@
+.affix {
+	top: 0;
+	width: 100%;
+	z-index: 9999 !important;
+}
+.affix + .container-fluid, .affix + .container {
+	padding-top: 70px;
+}
+.affix .navbar-brand {
+	width: 328px;
+	height: 50px;
+	padding: 50px 0 0;
+	background: url(/images/logo-s.png) no-repeat top left;
+	overflow: hidden;
+}
+.affix-top #login {
+	position: absolute;
+	bottom: 3.5em;
+	right: 1em;
+	width: 250px;
+	text-align: right;
+	line-height: 40px;
+}
+.affix .loggedin-user {
+	color: #fff;
+}
+.affix-top #login button, .affix-top #login input {
+	width: 170px;
+	width: 100%;
+}

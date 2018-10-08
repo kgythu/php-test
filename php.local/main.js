@@ -35,6 +35,21 @@ $(function() {
 			});
 		};
 	});
+	$('button.del').click(function() {
+		var delID = $(this).attr('id');
+		var delTD = $(this).parent().parent();
+		//alert(delID);
+		del = {id: delID};
+		$.post('del_cat.php', del, function(data) {
+			if(data.status) {
+				delTD.hide();
+				setTimeout(alert, 1, data.message);
+				//alert(data.message);
+			} else {
+				alert(data.message);
+			};
+		});
+	});
 	$('input[name=cat_name]').change(function() {
 		if($('input[name=cat_name]').val() != '') {
 			$('input[name=cat_name]').parent().removeClass('danger');

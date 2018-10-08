@@ -3,7 +3,7 @@
 	$sql = 'SELECT cats.*, cat_sexes.cat_sex_name FROM cats JOIN cat_sexes '
 		. 'ON cats.cat_sex = cat_sexes.cat_sex_id;';
 	/* */
-	$sql = 'SELECT * FROM cats ORDER BY ';
+	$sql = 'SELECT * FROM cats WHERE cat_deleted = FALSE ORDER BY ';
 	if(isset($order)) {
 		switch($order) {
 			case 'name2':
@@ -88,7 +88,7 @@
 		};
 		//{$row['cat_neutered']}
 		echo "\t\t\t\t</select></td>\n";
-		echo "\t\t\t\t<td class=\"text-right\"><button class=\"btn btn-danger btn-block\">\n";
+		echo "\t\t\t\t<td class=\"text-right\"><button id=\"del{$row['cat_id']}\" class=\"del btn btn-danger btn-block\">\n";
 		echo "\t\t\t\t\tTörlés <span class=\"glyphicon glyphicon-floppy-remove\"></span>\n";
 		echo "\t\t\t\t</button></td>\n";
 		echo "\t\t\t</tr>\n";

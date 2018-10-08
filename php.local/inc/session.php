@@ -61,6 +61,7 @@
 				// Marad belépve
 				$logged = true;
 				$user = $row['user_id'];
+				$user_datas = $row;
 				session_extend($sid);
 			} else {
 				// Lejárt a session
@@ -91,6 +92,7 @@
 				'strong' => 'Sikeres belépés!',
 				'text' => ''
 			);
+			$user_datas = $row;
 		} else {
 			$logged = false;
 			session_logout($sid);

@@ -1,4 +1,5 @@
 $(function() {
+	$('select.usersex').parent().css("display", "inline-block");
 	$('#new_cat').click(function() {
 		newCat = {
 			name:     $('input[name=cat_name]').val(),

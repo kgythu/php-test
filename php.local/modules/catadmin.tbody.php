@@ -93,13 +93,4 @@
 		echo "\t\t\t\t</button></td>\n";
 		echo "\t\t\t</tr>\n";
 	};
-/*
-cat_id
-cat_name
-cat_sex
-cat_chip
-cat_birth
-cat_neutered
-*/
-	//echo 'Catadmin';
 ?>

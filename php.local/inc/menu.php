@@ -30,7 +30,7 @@
 if($logged) {
 ?>
 					<div class="form-group loggedin-user">Belépett felhasználó:
-						<strong><?=$user?></strong>
+						<strong><a href="/profil"><?=$user?></a></strong>
 					</div>
 					<input type="hidden" name="logout" value="true" />
 <?php

@@ -1,5 +1,10 @@
 	<h2>Személyes adatok</h2>
 <?php
+	echo "\t<p class=\"avatar\">";
+	echo get_gravatar($user_datas['user_email'], 300, 'mp', 'g', true);
+	// Másik megoldás
+	// https://tecadmin.net/php-script-to-get-gravatar-image-using-email-address/
+	echo "</p>";
 	echo "\t<p>Név: <strong>";
 	if($user_datas['user_easternorder']) {
 		echo $user_datas['user_title'],
@@ -24,5 +29,8 @@
 		};
 		echo " value=\"{$row2['user_sex_id']}\">{$row2['user_sex_name']}</option>\n";
 	};
-echo "</select></strong></p>\n";
+	echo "\t</select></strong></p>\n";
+	echo "\t<pre>\n";
+	var_dump(get_gravatar_profile($user_datas['user_email']));
+	echo "\t</pre>\n";
 ?>

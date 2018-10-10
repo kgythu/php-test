@@ -1,5 +1,6 @@
 $(function() {
 	$('select.usersex').parent().css("display", "inline-block");
+	$('.avatar img').addClass('img-circle');
 	$('#new_cat').click(function() {
 		newCat = {
 			name:     $('input[name=cat_name]').val(),

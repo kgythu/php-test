@@ -30,7 +30,9 @@
 		echo " value=\"{$row2['user_sex_id']}\">{$row2['user_sex_name']}</option>\n";
 	};
 	echo "\t</select></strong></p>\n";
+	$gravatar_data = get_gravatar_profile($user_datas['user_email'])['entry'][0];
+	formatted_gravatar_profile($gravatar_data);
 	echo "\t<pre>\n";
-	var_dump(get_gravatar_profile($user_datas['user_email']));
+	var_dump($gravatar_data);
 	echo "\t</pre>\n";
 ?>

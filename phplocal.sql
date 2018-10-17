@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2018. Okt 15. 17:30
+-- Létrehozás ideje: 2018. Okt 17. 18:51
 -- Kiszolgáló verziója: 10.1.28-MariaDB
 -- PHP verzió: 7.1.10
 
@@ -162,7 +162,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`session_id`, `session_created`, `session_ip`, `session_ua`, `user_id`, `session_timeout`) VALUES
-('541a21effadb61040fe414b70e1be87dbe5dac82', '2018-09-24 17:56:28', '127_0_0_1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36', 'webler', '2018-10-15 17:27:39'),
+('541a21effadb61040fe414b70e1be87dbe5dac82', '2018-09-24 17:56:28', '127_0_0_1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36', NULL, NULL),
 ('560c1c2bbb07b6f216d545f5ce69e25b837fcb53', '2018-09-24 19:50:25', '127_0_0_1', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E)', NULL, NULL);
 
 -- --------------------------------------------------------
@@ -211,7 +211,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_pass`, `user_timeout`, `user_firstname`, `user_lastname`, `user_easternorder`, `user_title`, `user_sex`, `user_email`) VALUES
-('webler', '4ba0e83f109b1b13f9f736feb61072520f514e48', 1300, 'Rebecca', 'Hawk', 0, 'Mrs.', 2, 'kgyt@kgyt.hu');
+('webler', '4ba0e83f109b1b13f9f736feb61072520f514e48', 1300, 'Rebecca', 'Hawk', 0, 'Mrs.', 2, 'y@kgyt.hu');
 
 -- --------------------------------------------------------
 
@@ -241,7 +241,7 @@ INSERT INTO `user_sexes` (`user_sex_id`, `user_sex_name`) VALUES
 --
 DROP TABLE IF EXISTS `sessions_fulldata`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `sessions_fulldata`  AS  select `sessions`.`session_id` AS `session_id`,`sessions`.`session_created` AS `session_created`,`sessions`.`session_ip` AS `session_ip`,`sessions`.`session_ua` AS `session_ua`,`sessions`.`user_id` AS `user_id`,`sessions`.`session_timeout` AS `session_timeout`,now() AS `now`,`users`.`user_timeout` AS `user_timeout`,`users`.`user_firstname` AS `user_firstname`,`users`.`user_lastname` AS `user_lastname`,`users`.`user_easternorder` AS `user_easternorder`,`users`.`user_title` AS `user_title`,`users`.`user_sex` AS `user_sex`,`users`.`user_email` AS `user_email` from (`sessions` left join `users` on((`sessions`.`user_id` = `users`.`user_id`))) ;
+CREATE VIEW `sessions_fulldata`  AS  select `sessions`.`session_id` AS `session_id`,`sessions`.`session_created` AS `session_created`,`sessions`.`session_ip` AS `session_ip`,`sessions`.`session_ua` AS `session_ua`,`sessions`.`user_id` AS `user_id`,`sessions`.`session_timeout` AS `session_timeout`,now() AS `now`,`users`.`user_timeout` AS `user_timeout`,`users`.`user_firstname` AS `user_firstname`,`users`.`user_lastname` AS `user_lastname`,`users`.`user_easternorder` AS `user_easternorder`,`users`.`user_title` AS `user_title`,`users`.`user_sex` AS `user_sex`,`users`.`user_email` AS `user_email` from (`sessions` left join `users` on((`sessions`.`user_id` = `users`.`user_id`))) ;
 
 --
 -- Indexek a kiírt táblákhoz

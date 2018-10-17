@@ -65,11 +65,14 @@
 		echo $ip_formatted = (preg_match('/^([12]?\d\d?_){3}[12]?\d\d?$/', $ip)) ? preg_replace('/_/', '.', $ip) :
 			preg_replace('/_/', ':', $ip);
 		echo ' – ';
+		// https://ipapi.com/documentation
+		// Please don't use my access key.
+		// You can get free api key: https://ipapi.com/signup
 		$url = 'http://api.ipapi.com/' . $ip_formatted . '?access_key=b5d69fc75ce349b08bd204fb9326655b&format=0';
 		$ipObj = json_decode(file_get_contents($url));
 		/*
 {
-  "ip":"89.134.214.143",
+  "ip":"1.2.3.4",
   "type":"ipv4",
   "continent_code":"EU",
   "continent_name":"Europe",

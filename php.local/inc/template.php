@@ -59,5 +59,51 @@
 	};
 ?>
 </div>
+<footer>
+<div id="mainfoot" class="container-fluid">
+	IP: <?php
+		echo $ip_formatted = (preg_match('/^([12]?\d\d?_){3}[12]?\d\d?$/', $ip)) ? preg_replace('/_/', '.', $ip) :
+			preg_replace('/_/', ':', $ip);
+		echo ' – ';
+		$url = 'http://api.ipapi.com/' . $ip_formatted . '?access_key=b5d69fc75ce349b08bd204fb9326655b&format=0';
+		$ipObj = json_decode(file_get_contents($url));
+		/*
+{
+  "ip":"89.134.214.143",
+  "type":"ipv4",
+  "continent_code":"EU",
+  "continent_name":"Europe",
+  "country_code":"HU",
+  "country_name":"Hungary",
+  "region_code":"BU",
+  "region_name":"Budapest",
+  "city":"Budapest",
+  "zip":"1012",
+  "latitude":47.5,
+  "longitude":19.0833,
+  "location":{
+    "geoname_id":3054643,
+    "capital":"Budapest",
+    "languages":[
+      {
+        "code":"hu",
+        "name":"Hungarian",
+        "native":"Magyar"
+      }
+    ],
+    "country_flag":"http:\/\/assets.ipapi.com\/flags\/hu.svg",
+    "country_flag_emoji":"\ud83c\udded\ud83c\uddfa",
+    "country_flag_emoji_unicode":"U+1F1ED U+1F1FA",
+    "calling_code":"36",
+    "is_eu":true
+  }
+}
+		*/
+		echo $ipObj->country_name;
+		//echo ' ' . $ipObj->location->country_flag_emoji;
+		echo " <img src=\"{$ipObj->location->country_flag}\" alt=\"{$ipObj->country_name}\" class=\"flag-emoji\" />";
+	?>
+</div>
+</footer>
 </body>
 </html>

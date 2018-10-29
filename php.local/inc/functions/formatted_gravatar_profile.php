@@ -287,7 +287,8 @@ function formatted_gravatar_profile($profile, $print = true, $tab = 1) {
     // - profileUrl (gravatar specific)
 	$return .= $ind . "\t" . '<tr>' . "\n";
 	$return .= $ind . "\t\t" . '<th>Gravatar profil</th>' . "\n";
-	$return .= $ind . "\t\t" . '<td><a href="' . $profile["profileUrl"] . '">' . $profile["profileUrl"] . '</a></td>' . "\n";
+  $return .= $ind . "\t\t" . '<td><a href="' . $profile["profileUrl"] . '"><i class="fa fa-external-link-square"></i> '
+    . $profile["profileUrl"] . '</a></td>' . "\n";
     $return .= $ind . "\t" . '</tr>' . "\n";
     // - thumbnailUrl (gravatar specific)
 	$return .= $ind . "\t" . '<tr>' . "\n";
@@ -321,20 +322,35 @@ function formatted_gravatar_profile($profile, $print = true, $tab = 1) {
     };
     // - phoneNumbers
     if(is_array($profile["phoneNumbers"]) && count($profile["phoneNumbers"])) {
-        $return .= $ind . "\t" . '<tr class="info">' . "\n";
-        $return .= $ind . "\t\t" . '<th colspan="2">Telefonszám';
-        if(count($profile["phoneNumbers"]) > 1) $return .= 'ok';
-        $return .= '</th>' . "\n";
-        $return .= $ind . "\t" . '</tr>' . "\n";
-        foreach($profile["phoneNumbers"] as $phone) {
-            $return .= $ind . "\t" . '<tr>' . "\n";
-            $return .= $ind . "\t\t" . '<th>' . phone_types($phone["type"]) . '</th>' . "\n";
-            $return .= $ind . "\t\t" . '<td><a href="tel:' . $phone["value"]
-                . '"><i class="fa fa-phone-square"></i> '
-                . $phone["value"] . '</a></td>' . "\n";
-            $return .= $ind . "\t" . '</tr>' . "\n";
-        };
-    };
+      $return .= $ind . "\t" . '<tr class="info">' . "\n";
+      $return .= $ind . "\t\t" . '<th colspan="2">Telefonszám';
+      if(count($profile["phoneNumbers"]) > 1) $return .= 'ok';
+      $return .= '</th>' . "\n";
+      $return .= $ind . "\t" . '</tr>' . "\n";
+      foreach($profile["phoneNumbers"] as $phone) {
+          $return .= $ind . "\t" . '<tr>' . "\n";
+          $return .= $ind . "\t\t" . '<th>' . phone_types($phone["type"]) . '</th>' . "\n";
+          $return .= $ind . "\t\t" . '<td><a href="tel:' . $phone["value"]
+              . '"><i class="fa fa-phone-square"></i> '
+              . $phone["value"] . '</a></td>' . "\n";
+          $return .= $ind . "\t" . '</tr>' . "\n";
+      };
+  };
+    // - emails
+    if(is_array($profile["emails"]) && count($profile["emails"])) {
+      $return .= $ind . "\t" . '<tr class="info">' . "\n";
+      $return .= $ind . "\t\t" . '<th colspan="2">E-mail cím';
+      if(count($profile["emails"]) > 1) $return .= 'ek';
+      $return .= '</th>' . "\n";
+      $return .= $ind . "\t" . '</tr>' . "\n";
+      foreach($profile["emails"] as $email) {
+          $return .= $ind . "\t" . '<tr>' . "\n";
+          $return .= $ind . "\t\t" . '<td colspan="2"><a href="tel:' . $email["value"]
+              . '"><i class="fa fa-envelope-square"></i> '
+              . $email["value"] . '</a></td>' . "\n";
+          $return .= $ind . "\t" . '</tr>' . "\n";
+      };
+  };
 
 	// table foot
 	$return .= $ind . '</table>' . "\n";

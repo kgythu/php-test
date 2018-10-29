@@ -1,3 +1,6 @@
+body {
+	padding-bottom: 6em;
+}
 .affix {
 	top: 0;
 	width: 100%;
